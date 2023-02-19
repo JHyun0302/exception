@@ -7,6 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * response.sendError(HTTP 상태 코드, 오류 메시지);  -> http 오류 코드 & 오류 메시지 설정 가능
+ * <p>
+ * "WebServerCustomizer" - @Component 주석처리: 스프링이 제공하는 BasicErrorController 사용가능!!
+ * <p>
+ * BasicErrorController는 경로에 맞게 오류 페이지만 넣어주고 mapping 시키면 됨!
+ */
 @Slf4j
 @Controller
 public class ServletExController {
