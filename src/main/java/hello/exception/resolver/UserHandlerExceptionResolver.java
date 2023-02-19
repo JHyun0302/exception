@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * HandlerExceptionResolver 이용: 인터페이스 구현해야해서 복잡함
+ */
 @Slf4j
 public class UserHandlerExceptionResolver implements HandlerExceptionResolver {
 
@@ -30,15 +33,15 @@ public class UserHandlerExceptionResolver implements HandlerExceptionResolver {
                     errorResult.put("ex", ex.getClass());
                     errorResult.put("message", ex.getMessage());
 
-                    String result = objectMapper.writeValueAsString(errorResult); //json을 문자로 바꿈
+                    String result = objectMapper.writeValueAsString(errorResult); //json -> 문자
 
                     response.setContentType("application/json");
                     response.setCharacterEncoding("utf-8");
                     response.getWriter().write(result);
 
-                    return new ModelAndView();
+                    return new ModelAndView(); //예외는 먹고 빈 ModelAndView() 반환
                 } else {
-                    //TEXT/HTML
+                    // TEXT/HTML
                     return new ModelAndView("error/500");
                 }
             }
