@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * ServletExController: 에러를 WAS까지 전달
- * WebServerCustomizeer: 전달 받은 에러(404, 500, Runtime) 들어오면 url로 mapping
+ * WebServerCustomizer: 전달 받은 에러(404, 500, Runtime) 들어오면 url로 mapping
  * <p>
  * ErrorPageController: Mapping된 URL 처리
  */
@@ -51,7 +51,9 @@ public class ErrorPageController {
     }
 
     /**
-     * client가 send한 Accept타입이 application/json인 경우 우선권을 가짐
+     * API 전송시 오류 발생하면 오류 페이지 HTML 반환됨!! -> JSON 응답하도록 Controller 수정!
+     * <p>
+     * client가 send한 <Accept: application/json>인 경우 우선권을 가짐
      * WebServerCustomizer의 @Component 주석 풀기
      */
     @RequestMapping(value = "/error-page/500", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -59,7 +61,7 @@ public class ErrorPageController {
         log.info("API errorPage 500");
 
         Map<String, Object> result = new HashMap<>();
-        Exception ex = (Exception) request.getAttribute(ERROR_EXCEPTION);
+        Exception ex = (Exception) request.getAttribute(ERROR_EXCEPTION); //"ApiExceptionController"의 e.message
         result.put("status", request.getAttribute(ERROR_STATUS_CODE));
         result.put("message", ex.getMessage());
 
