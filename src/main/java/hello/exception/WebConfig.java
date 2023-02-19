@@ -24,6 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 스프링 인터셉터(LogInterceptor) 등록
+     * request.getDispatcherType() 테스트
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -46,6 +47,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     /**
      * 서블릿 필터(LogFilter) 등록
+     * request.getDispatcherType() 안 넣으면 기본 값: "DispatcherType.REQUEST"만 적용
      */
 //    @Bean
     public FilterRegistrationBean logFilter() {
