@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * @ExceptionHandler: API 방식 예외 처리
+ * @RestControllerAdvice: 정상 코드와 예외 처리 코드 분리
+ */
 @Slf4j
 @RestControllerAdvice(basePackages = "hello.exception.api") //package:api 에 적용(V2, V3 모두 적용됨)
 public class ExControllerAdvice {

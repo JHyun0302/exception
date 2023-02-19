@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * ExControllerAdvice 적용(정상 처리 & 에러 처리 분리)
+ */
 @Slf4j
 @RestController
 public class ApiExceptionV3Controller {
