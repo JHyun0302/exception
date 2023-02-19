@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
+/**
+ * 스프링 인터셉터를 이용한 request.getDispatcherType()
+ * 클라이언트로부터 발생한 정상 요청 vs 오류 페이지 출력을 위한 내부 요청   구분!
+ */
 @Slf4j
 public class LogInterceptor implements HandlerInterceptor {
     public static final String LOG_ID = "logId";
