@@ -14,6 +14,8 @@ import java.util.Map;
 
 /**
  * HandlerExceptionResolver 이용: 인터페이스 구현해야해서 복잡함
+ * <p>
+ * 스프링이 제공하는 ExceptionResolver 쓰기!
  */
 @Slf4j
 public class UserHandlerExceptionResolver implements HandlerExceptionResolver {
