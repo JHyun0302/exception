@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * API 방식 데이터 전송
+ */
 @Slf4j
 @RestController
 public class ApiExceptionController {
@@ -28,21 +31,34 @@ public class ApiExceptionController {
         if (id.equals("user-ex")) {
             throw new UserException("사용자 오류");
         }
-
-
         return new MemberDto(id, "hello " + id);
     }
 
+    /**
+     * ResponseStatusExceptionResolver
+     *
+     * @ResponseStatus
+     */
     @GetMapping("/api/response-status-ex1")
     public String responseStatusEx1() {
         throw new BadRequestException();
     }
 
+    /**
+     * ResponseStatusExceptionResolver
+     * HTTP 응답 코드 변경
+     * <p>
+     * ResponseStatusException: 애노테이션을 못 쓰는 상황(수정 불가능한 라이브러)
+     */
     @GetMapping("/api/response-status-ex2")
     public String responseStatusEx2() {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "error.bad", new IllegalArgumentException());
     }
 
+    /**
+     * DefaultHandlerExceptionResolver.handleTypeMismatch
+     * 스프링 내부 예외 처리
+     */
     @GetMapping("/api/default-handler-ex")
     public String defaultException(@RequestParam Integer data) {
         return "ok";
