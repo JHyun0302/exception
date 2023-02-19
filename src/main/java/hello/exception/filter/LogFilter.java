@@ -7,6 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.UUID;
 
+/**
+ * 서블릿 로그 필터(request.getDispatcherType())
+ * 클라이언트로부터 발생한 정상 요청 vs 오류 페이지 출력을 위한 내부 요청   구분!
+ */
 @Slf4j
 public class LogFilter implements Filter {
     @Override
