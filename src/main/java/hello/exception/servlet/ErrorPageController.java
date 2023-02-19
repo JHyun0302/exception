@@ -13,11 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * ServletExController: 에러를 WAS까지 전달
+ * WebServerCustomizeer: 전달 받은 에러(404, 500, Runtime) 들어오면 url로 mapping
+ * <p>
+ * ErrorPageController: Mapping된 URL 처리
+ */
 @Slf4j
 @Controller
 public class ErrorPageController {
 
-    //RequestDispatcher 상수로 정의되어 있음
+    /**
+     * 오류 정보를 request.attribute에 추가해서 넘겨주기
+     * RequestDispatcher 상수로 정의되어 있음
+     * <p>
+     * 내가 직접 지정한 error-page(스프링 부트(BasicErrorController) 사용 X)
+     */
     public static final String ERROR_EXCEPTION = "javax.servlet.error.exception";
     public static final String ERROR_EXCEPTION_TYPE = "javax.servlet.error.exception_type";
     public static final String ERROR_MESSAGE = "javax.servlet.error.message";
@@ -25,7 +36,7 @@ public class ErrorPageController {
     public static final String ERROR_SERVLET_NAME = "javax.servlet.error.servlet_name";
     public static final String ERROR_STATUS_CODE = "javax.servlet.error.status_code";
 
-    @RequestMapping("/error-page/404") //Get이든 Post든 1번에 처리할려고 @RequestMapping 사용
+    @RequestMapping("/error-page/404") //@RequestMapping: Get&Post 모두 처리
     public String errorPage404(HttpServletRequest request, HttpServletResponse response) {
         log.info("errorPage 404");
         printErrorInfo(request);
