@@ -1,5 +1,8 @@
 package hello.exception.exception;
 
+/**
+ * ExceptionResolver 활용
+ */
 public class UserException extends RuntimeException {
     public UserException() {
         super();
